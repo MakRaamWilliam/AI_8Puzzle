@@ -19,7 +19,7 @@ public class main {
 //     for(BoardState boardState: states){
 //         boardState.printBoard();
 //     }
-       SolveMethods method = new BfsMethod(state);
-
+       SolveMethods bfs = new BfsMethod(state);
+        SolveMethods dsf = new DfsMethod(state);
     }
 }

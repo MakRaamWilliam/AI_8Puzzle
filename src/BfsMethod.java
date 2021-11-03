@@ -5,9 +5,10 @@ import java.util.Queue;
 
 public class BfsMethod extends  SolveMethods{
 
-
+    Long time;
     BfsMethod(BoardState boardState) {
         super(boardState);
+        this.time = System.currentTimeMillis();
         solve(boardState);
     }
 
@@ -25,7 +26,8 @@ public class BfsMethod extends  SolveMethods{
             con++;
             if(currState.isGoal()){
                 System.out.println("ssssssssss");
-                super.nodesExpanded = con;
+                super.nodesExpanded = con-1;
+                super.runtime = System.currentTimeMillis() - time;
                 super.sucess(currState);
                 break;
             }

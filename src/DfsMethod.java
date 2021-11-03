@@ -2,9 +2,10 @@ import java.util.*;
 
 public class DfsMethod extends  SolveMethods{
 
-
+    Long time;
     DfsMethod(BoardState boardState) {
         super(boardState);
+        time = System.currentTimeMillis();
         solve(boardState);
     }
 
@@ -17,16 +18,18 @@ public class DfsMethod extends  SolveMethods{
 
         while (stack.isEmpty() == false ){
             BoardState currState = stack.peek();
-            currState.printBoard();
+//            currState.printBoard();
             stack.pop();
             con++;
             if(currState.isGoal()){
                 System.out.println("ssssssssss");
-                super.nodesExpanded = con;
+                super.nodesExpanded = con - 1;
+                super.runtime = System.currentTimeMillis() - time;
                 super.sucess(currState);
                 break;
             }
             ArrayList<BoardState> neighbours = currState.getNeighbours();
+            Collections.reverse(neighbours);
             for(BoardState state : neighbours){
                 if(set.contains(state.toString()) == false){
                     stack.push(state);
