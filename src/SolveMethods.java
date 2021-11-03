@@ -8,9 +8,21 @@ public class SolveMethods {
     int searchDepth;
     double runtime;
 
-    SolveMethods(String method,BoardState boardState){
+    SolveMethods(BoardState boardState){
+       pathToGoal = new ArrayList<>();
        this.boardState = boardState;
-
     }
-
+   public  void sucess(BoardState state){
+        while (state.parent != null){
+            pathToGoal.add(0,state.action);
+            state = state.parent;
+        }
+        printPath();
+        System.out.println("nodes expanded= "+ nodesExpanded);
+   }
+  public void printPath(){
+        System.out.println("Path to goal");
+        for(int x : pathToGoal)
+            System.out.print(x + " ");
+  }
 }

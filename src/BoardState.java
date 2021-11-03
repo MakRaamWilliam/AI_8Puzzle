@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BoardState {
 //   int goal [][] = {{0,1,2},{3,4,5},{6,7,8}};
@@ -100,7 +101,19 @@ public class BoardState {
        }
        System.out.println("action "+this.action);
        System.out.println("Cost "+this.cost);
+       if(parent != null)
+         System.out.println("parent: "+ parent.toString());
        System.out.println("-----------------");
-
    }
+
+    @Override
+    public String toString() {
+       String tostring = "";
+        for(int i=0;i<3;i++){
+            for (int j=0;j<3;j++){
+                tostring+=board[i][j];
+            }
+        }
+        return tostring;
+    }
 }
