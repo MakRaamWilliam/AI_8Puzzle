@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class BoardState {
 //   int goal [][] = {{0,1,2},{3,4,5},{6,7,8}};
@@ -9,7 +10,7 @@ public class BoardState {
    int cost=0;
    int depth;
    BoardState parent;
-   int fn ;
+   double fn ;
    int action;
 
    BoardState(int [][] board,int cost,BoardState parent,int action ){
@@ -101,10 +102,33 @@ public class BoardState {
        }
        System.out.println("action "+this.action);
        System.out.println("Cost "+this.cost);
+       System.out.println("F(n) "+ this.fn);
        if(parent != null)
          System.out.println("parent: "+ parent.toString());
        System.out.println("-----------------");
    }
+
+   public void getManhattan(){
+     int man=0;
+     for(int i=0;i<3;i++){
+         for(int j=0;j<3;j++){
+             int corrX = board[i][j]/3,corrY=board[i][j]%3;
+             man+=Math.abs(corrX-i)+Math.abs(corrY-j);
+         }
+     }
+     this.fn = man + this.cost;
+   }
+
+    public void getEuclidean(){
+        double euc=0;
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                int corrX = board[i][j]/3,corrY=board[i][j]%3;
+                euc+= Math.sqrt((corrX-i)*(corrX-i) + (corrY-j)*(corrY-j));
+            }
+        }
+        this.fn = euc + this.cost;
+    }
 
     @Override
     public String toString() {
@@ -115,5 +139,20 @@ public class BoardState {
             }
         }
         return tostring;
+    }
+}
+class BoardComparator implements Comparator<BoardState>{
+
+    @Override
+    public int compare(BoardState o1, BoardState o2) {
+        if(o1.fn < o2.fn)
+            return -1;
+        else if(o1.fn > o2.fn)
+            return 1;
+        else if(o1.fn == o2.fn && o1.action < o2.action)
+            return -1;
+        else if(o1.fn == o2.fn && o1.action > o2.action)
+            return 1;
+        return 0;
     }
 }

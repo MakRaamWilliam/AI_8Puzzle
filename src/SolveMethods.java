@@ -28,7 +28,6 @@ public class SolveMethods {
        System.out.println("--------------------");
        System.out.println("--------------------");
 
-
    }
   public void printPath(){
         System.out.print("Path to goal: ");
