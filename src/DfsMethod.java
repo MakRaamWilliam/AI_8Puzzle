@@ -3,6 +3,7 @@ import java.util.*;
 public class DfsMethod extends  SolveMethods{
 
     Long time;
+    boolean flag = false;
     DfsMethod(BoardState boardState) {
         super(boardState);
         time = System.currentTimeMillis();
@@ -16,13 +17,13 @@ public class DfsMethod extends  SolveMethods{
         set.add(boardState.toString());
         int con =0 ;
 
-        while (stack.isEmpty() == false ){
+        while (!stack.isEmpty()){
             BoardState currState = stack.peek();
 //            currState.printBoard();
             stack.pop();
             con++;
             if(currState.isGoal()){
-                System.out.println("ssssssssss");
+                flag = true;
                 super.nodesExpanded = con - 1;
                 super.runtime = System.currentTimeMillis() - time;
                 super.sucess(currState);
@@ -31,12 +32,14 @@ public class DfsMethod extends  SolveMethods{
             ArrayList<BoardState> neighbours = currState.getNeighbours();
             Collections.reverse(neighbours);
             for(BoardState state : neighbours){
-                if(set.contains(state.toString()) == false){
+                if(!set.contains(state.toString())){
                     stack.push(state);
                     set.add(state.toString());
                 }
             }
         }
+        if(!flag)
+            super.failure();
     }
 
 }

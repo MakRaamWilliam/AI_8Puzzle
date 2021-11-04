@@ -1,10 +1,11 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.PriorityQueue;
 
-public class AManhattan extends  SolveMethods {
-
+public class AEuclidean extends SolveMethods {
+    boolean flag =false;
     Long time;
-    boolean flag = false;
-    AManhattan(BoardState boardState) {
+    AEuclidean(BoardState boardState) {
         super(boardState);
         this.time = System.currentTimeMillis();
         solve(boardState);
@@ -12,12 +13,12 @@ public class AManhattan extends  SolveMethods {
 
     private void solve(BoardState boardState) {
         PriorityQueue<BoardState> priorityQueue= new PriorityQueue<>(new BoardComparator());
-        boardState.getManhattan();
+        boardState.getEuclidean();
         priorityQueue.add(boardState);
         HashSet<String> set = new HashSet<>();
         int con =0 ;
 
-        while (priorityQueue.isEmpty() == false && con < 10000000 ){
+        while (!priorityQueue.isEmpty() && con < 1000000 ){
             BoardState currState = priorityQueue.poll();
             set.add(currState.toString());
             currState.printBoard();
@@ -32,7 +33,7 @@ public class AManhattan extends  SolveMethods {
             ArrayList<BoardState> neighbours = currState.getNeighbours();
             for(BoardState state : neighbours){
                 if(!set.contains(state.toString())){
-                    state.getManhattan();
+                    state.getEuclidean();
                     priorityQueue.add(state);
                     set.add(state.toString());
                 }

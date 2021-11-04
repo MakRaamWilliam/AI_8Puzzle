@@ -6,6 +6,7 @@ import java.util.Queue;
 public class BfsMethod extends  SolveMethods{
 
     Long time;
+    boolean flag = false;
     BfsMethod(BoardState boardState) {
         super(boardState);
         this.time = System.currentTimeMillis();
@@ -19,13 +20,13 @@ public class BfsMethod extends  SolveMethods{
         set.add(boardState.toString());
         int con =0 ;
 
-        while (queue.isEmpty() == false ){
+        while (!queue.isEmpty()){
             BoardState currState = queue.peek();
             currState.printBoard();
             queue.remove();
             con++;
             if(currState.isGoal()){
-                System.out.println("ssssssssss");
+                flag =true;
                 super.nodesExpanded = con-1;
                 super.runtime = System.currentTimeMillis() - time;
                 super.sucess(currState);
@@ -33,12 +34,14 @@ public class BfsMethod extends  SolveMethods{
             }
             ArrayList<BoardState> neighbours = currState.getNeighbours();
             for(BoardState state : neighbours){
-                if(set.contains(state.toString()) == false){
+                if(!set.contains(state.toString())){
                     queue.add(state);
                     set.add(state.toString());
                 }
             }
         }
+        if(!flag)
+           super.failure();
     }
 
 }

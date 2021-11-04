@@ -29,6 +29,10 @@ public class SolveMethods {
        System.out.println("--------------------");
 
    }
+
+   public void  failure (){
+        System.out.println("it's not solvable ");
+   }
   public void printPath(){
         System.out.print("Path to goal: ");
         for(String x : pathToGoal)
