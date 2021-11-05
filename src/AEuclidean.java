@@ -3,9 +3,10 @@ import java.util.HashSet;
 import java.util.PriorityQueue;
 
 public class AEuclidean extends SolveMethods {
-    boolean flag =false;
-    Long time;
-    AEuclidean(BoardState boardState) {
+    private boolean flag =false;
+    private Long time;
+
+    public AEuclidean(BoardState boardState) {
         super(boardState);
         this.time = System.currentTimeMillis();
         solve(boardState);
@@ -35,7 +36,6 @@ public class AEuclidean extends SolveMethods {
                 if(!set.contains(state.toString())){
                     state.getEuclidean();
                     priorityQueue.add(state);
-                    set.add(state.toString());
                 }
             }
         } if(!flag)

@@ -1,0 +1,35 @@
+Up Left Left 
+Cost= 3
+nodes expanded= 3
+Depth search= 3
+Run Time= 16 ms
+--------------------
+--------------------
+Up Left Left 
+Cost= 3
+nodes expanded= 10
+Depth search= 3
+Run Time= 31 ms
+--------------------
+--------------------
+Up Left Left 
+Cost= 3
+nodes expanded= 181437
+Depth search= 3
+Run Time= 19556 ms
+--------------------
+--------------------
+Up Left Left 
+Cost= 3
+nodes expanded= 3
+Depth search= 3
+Run Time= 8 ms
+--------------------
+--------------------
+Up Left Left 
+Cost= 3
+nodes expanded= 3
+Depth search= 3
+Run Time= 16 ms
+--------------------
+--------------------

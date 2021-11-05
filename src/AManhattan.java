@@ -2,9 +2,10 @@ import java.util.*;
 
 public class AManhattan extends  SolveMethods {
 
-    Long time;
-    boolean flag = false;
-    AManhattan(BoardState boardState) {
+    private Long time;
+    private boolean flag = false;
+
+    public AManhattan(BoardState boardState) {
         super(boardState);
         this.time = System.currentTimeMillis();
         solve(boardState);
@@ -17,7 +18,7 @@ public class AManhattan extends  SolveMethods {
         HashSet<String> set = new HashSet<>();
         int con =0 ;
 
-        while (priorityQueue.isEmpty() == false && con < 10000000 ){
+        while (!priorityQueue.isEmpty() && con < 10000000 ){
             BoardState currState = priorityQueue.poll();
             set.add(currState.toString());
             currState.printBoard();
@@ -34,7 +35,7 @@ public class AManhattan extends  SolveMethods {
                 if(!set.contains(state.toString())){
                     state.getManhattan();
                     priorityQueue.add(state);
-                    set.add(state.toString());
+//                    set.add(state.toString());
                 }
             }
         } if(!flag)

@@ -4,7 +4,8 @@ public class DfsMethod extends  SolveMethods{
 
     Long time;
     boolean flag = false;
-    DfsMethod(BoardState boardState) {
+
+    public DfsMethod(BoardState boardState) {
         super(boardState);
         time = System.currentTimeMillis();
         solve(boardState);
@@ -19,7 +20,7 @@ public class DfsMethod extends  SolveMethods{
 
         while (!stack.isEmpty()){
             BoardState currState = stack.peek();
-//            currState.printBoard();
+            currState.printBoard();
             stack.pop();
             con++;
             if(currState.isGoal()){

@@ -5,9 +5,10 @@ import java.util.Queue;
 
 public class BfsMethod extends  SolveMethods{
 
-    Long time;
-    boolean flag = false;
-    BfsMethod(BoardState boardState) {
+    private Long time;
+    private boolean flag = false;
+
+    public BfsMethod(BoardState boardState) {
         super(boardState);
         this.time = System.currentTimeMillis();
         solve(boardState);
