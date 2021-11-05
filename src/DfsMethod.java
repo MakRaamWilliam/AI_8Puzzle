@@ -20,7 +20,7 @@ public class DfsMethod extends  SolveMethods{
 
         while (!stack.isEmpty()){
             BoardState currState = stack.peek();
-            currState.printBoard();
+//            currState.printBoard();
             stack.pop();
             con++;
             if(currState.isGoal()){

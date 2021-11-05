@@ -108,6 +108,18 @@ public class BoardState {
        System.out.println("-----------------");
    }
 
+    public String printPathBoard(){
+       String boardStr = "------------\n";
+        for(int i=0;i<3;i++){
+            boardStr+="|";
+            for (int j=0;j<3;j++){
+                boardStr+= board[i][j]+" | ";
+            }boardStr+="\n";
+        }
+        boardStr+="------------\n";
+        return boardStr;
+    }
+
    public void getManhattan(){
      int man=0;
      for(int i=0;i<3;i++){
